@@ -20,11 +20,6 @@ const sequelize = new Sequelize('qvyabyz53jrf2nrh', 'e3rh5509go67hfu9', 'lxix2x2
   dialect: 'mysql'
 })
 
-// start listening on our port
-const server = app.listen(app.get('port'), () => {
-  console.log(`Express server is listening on port ${server.address().port}`);
-  db.sequelize.sync();
-});
 
 // variable to enable global error logging
 const enableGlobalErrorLogging =
@@ -74,6 +69,13 @@ app.use((err, req, res, next) => {
 });
 
 app.set("port", process.env.PORT || 80);
+
+
+// start listening on our port
+const server = app.listen(app.get('port'), () => {
+  console.log(`Express server is listening on port ${server.address().port}`);
+  db.sequelize.sync();
+});
 
 
 
